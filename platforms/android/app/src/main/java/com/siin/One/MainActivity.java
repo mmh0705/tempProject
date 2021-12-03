@@ -38,6 +38,10 @@ import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.Toast;
 
+import com.chaquo.python.PyObject;
+import com.chaquo.python.Python;
+import com.chaquo.python.android.AndroidPlatform;
+
 import org.apache.cordova.*;
 
 import java.util.ArrayList;
@@ -59,6 +63,15 @@ public class MainActivity extends CordovaActivity
             Manifest.permission.RECEIVE_WAP_PUSH
     };
     private List permissionList;
+    
+    Python py = Python.getInstance();
+
+    PyObject pyo = py.getModule("init");
+    String a = "엉엉";
+
+    PyObject pyo2 = py.getModule("check");
+    String b = pyo2.callAttr("main",a).toString();
+
 
     void getPermissions(){
         ActivityCompat.requestPermissions(this,
