@@ -63,14 +63,7 @@ public class MainActivity extends CordovaActivity
             Manifest.permission.RECEIVE_WAP_PUSH
     };
     private List permissionList;
-    
-    Python py = Python.getInstance();
 
-    PyObject pyo = py.getModule("init");
-    String a = "엉엉";
-
-    PyObject pyo2 = py.getModule("check");
-    String b = pyo2.callAttr("main",a).toString();
 
 
     void getPermissions(){
@@ -117,6 +110,18 @@ public class MainActivity extends CordovaActivity
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
+        if(! Python.isStarted())
+            Python.start(new AndroidPlatform(this));
+
+        Python py = Python.getInstance();
+
+        PyObject pyo = py.getModule("init");
+        String a = "엉엉";
+
+        PyObject pyo2 = py.getModule("check");
+        String b = pyo2.callAttr("main",a).toString();
+
+
         super.onCreate(savedInstanceState);
         contextOfApplication = getApplicationContext();
 
