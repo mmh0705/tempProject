@@ -3,13 +3,13 @@ import pickle
 from os.path import dirname, join
 
 def main(text):
-  dir = str(Python.getPlatform().getApplication().getFilesDir())
+#  dir = str(Python.getPlatform().getApplication().getFilesDir())
 
-  filename = join(dirname(dir),"Bernoulli")
+  filename = join(dirname(__file__),"Bernoulli_6_6")
   with open(filename,'rb') as fin:
     clf = pickle.load(fin)
 
-  filename2 = join(dirname(dir),"Bernoullivect")
+  filename2 = join(dirname(__file__),"Bernoulli_6_6_vect")
   with open(filename2,'rb') as fin2:
     count_vect = pickle.load(fin2)
 
@@ -18,11 +18,11 @@ def main(text):
   if check == "[1]":
     return "피싱이 아닙니다."
   else:
-    filename = join(dirname(dir),"balanced(22)")
+    filename = join(dirname(__file__),"60000")
     with open(filename,'rb') as fin:
       clf = pickle.load(fin)
 
-    filename2 = join(dirname(dir),"balanced(22)vect")
+    filename2 = join(dirname(__file__),"60000vect")
     with open(filename2,'rb') as fin2:
       count_vect = pickle.load(fin2)
 
