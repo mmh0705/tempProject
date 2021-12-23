@@ -23,12 +23,6 @@
                 <action android:name="android.provider.Telephony.MMS_RECEIVED" />
             </intent-filter>
         </receiver>
-        <receiver android:name=".MMSBroadcastReceiver">
-            <intent-filter>
-                <action android:name="android.provider.Telephony.WAP_PUSH_RECEIVED" />
-                <data android:mimeType="application/vnd.wap.mms-message" />
-            </intent-filter>
-        </receiver>
         <service android:enabled="true" android:exported="true" android:name=".popUpService" />
     </application>
 </manifest>

@@ -3,7 +3,7 @@
     <feature name="CordovaCustomPlugin">
         <param name="android-package" value="info.androidabcd.plugins.custom.CordovaCustomPlugin" />
     </feature>
-    <name>One</name>
+    <name>WEKaT</name>
     <description>
         A sample Apache Cordova application that responds to the deviceready event.
     </description>

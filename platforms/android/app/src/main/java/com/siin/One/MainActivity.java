@@ -20,29 +20,22 @@
 package com.siin.One;
 
 import android.Manifest;
-import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.database.Cursor;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.provider.Settings;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
-import android.view.View;
-import android.widget.Toast;
 
 import com.chaquo.python.PyObject;
 import com.chaquo.python.Python;
 import com.chaquo.python.android.AndroidPlatform;
 
-import org.apache.cordova.*;
+import org.apache.cordova.CordovaActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -110,17 +103,6 @@ public class MainActivity extends CordovaActivity
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
-        if(! Python.isStarted())
-            Python.start(new AndroidPlatform(this));
-
-        Python py = Python.getInstance();
-
-        PyObject pyo = py.getModule("init");
-        String a = "엉엉";
-
-        PyObject pyo2 = py.getModule("check");
-        String b = pyo2.callAttr("main",a).toString();
-
 
         super.onCreate(savedInstanceState);
         contextOfApplication = getApplicationContext();

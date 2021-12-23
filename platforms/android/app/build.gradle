@@ -264,7 +264,7 @@ android {
         }
 
         python {
-            buildPython "C:/Users/tnrms/AppData/Local/Programs/Python/Python38-32/python.exe"
+            buildPython "C:/Users/u210813/AppData/Local/Programs/Python/Python39/python.exe"
         }
     }
 

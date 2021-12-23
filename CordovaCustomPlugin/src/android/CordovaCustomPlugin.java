@@ -182,6 +182,20 @@ public class CordovaCustomPlugin extends CordovaPlugin {
             callbackContext.success(result);
             return true;
         }
+        else if(action.equals("getBadSmsHashMap")){
+            String result = "";
+            for(Map.Entry<String, ArrayList<HashMapDetail_SMS>> entrySet : DataCenter.getInstance().getBadSmsHashMap().entrySet()){
+                String temp = entrySet.getKey();
+                ArrayList<HashMapDetail_SMS> tl = entrySet.getValue();
+                int i = 0;
+                while(i<tl.size()){
+                    result = result + temp + "--" + tl.get(i).getBody()+"--"+ tl.get(i).getTimestamp() + "^&";
+                    i++;
+                }
+            }
+            callbackContext.success(result);
+            return true;
+        }
         return false;
     }
 
@@ -271,6 +285,13 @@ public class CordovaCustomPlugin extends CordovaPlugin {
         }
     }
     private void getOverseaSmsHashMap(String message, CallbackContext callbackContext) {
+        if (message != null && message.length() > 0) {
+            callbackContext.success(message);
+        } else {
+            callbackContext.error("Expected one non-empty string argument.");
+        }
+    }
+    private void getBadSmsHashMap(String message, CallbackContext callbackContext) {
         if (message != null && message.length() > 0) {
             callbackContext.success(message);
         } else {

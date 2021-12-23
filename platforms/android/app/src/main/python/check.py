@@ -18,6 +18,7 @@ def main(text):
   if check == "[1]":
     return "피싱이 아닙니다."
   else:
+#     return "택배사칭 문자입니다."
     filename = join(dirname(__file__),"60000")
     with open(filename,'rb') as fin:
       clf = pickle.load(fin)

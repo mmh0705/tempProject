@@ -7,6 +7,7 @@
     android:orientation="vertical"
     android:weightSum="10">
 
+    <!--젤 윗부분-->
     <LinearLayout
         android:layout_weight="1"
         android:layout_width="match_parent"
@@ -21,13 +22,14 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@drawable/layout_bg_only_top_radius">
+
             <TextView
                 android:id="@+id/alert_textview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:textColor="@android:color/white"
-                android:text="안전문자"/>
+                android:text="안전문자"
+                android:textColor="@android:color/white" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -38,14 +40,14 @@
         </RelativeLayout>
     </LinearLayout>
 
+    <!--둘째 줄 부분-->
     <LinearLayout
         android:layout_weight="1"
         android:layout_width="match_parent"
         android:layout_height="20dp"
         android:background="@drawable/layout_bg_only_top_right_radius"
         android:orientation="horizontal"
-        android:weightSum="3">
-
+        android:weightSum="4">
 
         <RelativeLayout
             android:layout_width="1dp"
@@ -64,18 +66,13 @@
         <RelativeLayout
             android:layout_width="1dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"/>
+            android:layout_weight="0.5"/>
 
-        <RelativeLayout
-            android:layout_width="1dp"
-            android:layout_height="match_parent">
-
-        </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="1dp"
             android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_weight="1.5">
             <TextView
                 android:id="@+id/numberText"
                 android:layout_centerInParent="true"
@@ -84,6 +81,17 @@
                 android:text="" />
         </RelativeLayout>
 
+        <RelativeLayout
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <TextView
+                android:id="@+id/timeText"
+                android:layout_centerInParent="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="" />
+        </RelativeLayout>
     </LinearLayout>
 
     <LinearLayout

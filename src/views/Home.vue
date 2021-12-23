@@ -1,6 +1,17 @@
 <template>
  <v-app>
   <div class="home_container">
+
+    <div 
+      style="position:absolute; top: 45%; left: 45%;" 
+      v-if="isLoading==true">
+      <v-progress-circular
+        :size="50"
+        color="primary"
+        indeterminate
+      ></v-progress-circular>
+    </div>
+    
     <div id="home_appBar">
       <div id="logo">
         <img src="assets/we_ka_t.png" id="logo_img" />
@@ -25,8 +36,9 @@
 
     <div id="home_cat">
       <div :class="{
+                  'background_question':level==0,
                   'background_fish': level==4 , 
-                  'background_rain': level==3 || level==0,
+                  'background_rain': level==3,
                   'background_caution' :level==2,
                   'background_warning': level==1,
                   }">
@@ -74,7 +86,7 @@
     </div>
 
 	<div id='detail_button'> 
-        <div id='detail_button_btn' v-on:click='phishingAnalysis'>피싱 분석</div>
+        <div id='detail_button_btn' v-on:click='phishingAnalysis'><img src="assets/analysis_button_text.png" style="width: 45%;"></div>
         
         <!-- #############피싱 분석 페이지 시작점 ###################-->
         <v-bottom-sheet
@@ -788,14 +800,25 @@
 
 	</div>
 
-    <div id='bottom_sheet'>
-       
-        <div class="text-center">
+  <div id='bottom_sheet'>
+      <div class="text-center">
             <v-bottom-sheet v-model="sheet" inset>
                 <template v-slot:activator="{ on, attrs }">
-                    <v-btn color="grey" dark v-bind="attrs" v-on="on" style="width:50%">
+                  <div id="bottom_sheet_div" >
+                    <div id="bottom_sheet_button_column" v-bind="attrs" v-on="on">
+                      
+                      <div id="bottom_sheet_button_row">
+                        <div class="bottom_sheet_sized_box"></div>
+                        <div id="bottom_sheet_menu_icon"><v-icon color="white">menu</v-icon></div>
+                        <div class="bottom_sheet_sized_box"></div>
+                      </div>
+                      
+                      <div id="bottom_sheet_button_title">관련 컨텐츠</div>
+                    </div>
+                  </div>
+                    <!-- <v-btn color="grey" dark v-bind="attrs" v-on="on" style="width:50%">
                         <v-icon>menu</v-icon>
-                    </v-btn>
+                    </v-btn> -->
                 </template>
                 <v-sheet class="text-center" height="200px">
                     <v-btn class="mt-6" text color="error" v-on:click="sheet = !sheet">
@@ -806,10 +829,7 @@
                     </div>
                 </v-sheet>
             </v-bottom-sheet>
-
-
-        </div>
-       
+      </div>
 	</div>
 
     <div v-if='smsDetailPageToggle' v-bind:style="bottomSheet_style1">
@@ -830,6 +850,9 @@
                     <div v-bind:style='detailTopMenuStyle_component4' v-on:click='getZeroSevenSMS'>070</div>
                     <div v-bind:style='detailTopMenuStyle_component5' v-on:click='getAdSMS'>(광고)</div>
                     <div v-bind:style='detailTopMenuStyle_component1' v-on:click='getOverseaSMS'>(국외)</div>
+                </div>
+                <div v-bind:style="detailTopMenuStyle"> 
+                    <div v-bind:style='detailTopMenuStyle_component2' v-on:click='getBadSMS'>피싱문자</div>
                 </div>
             </div>
 
@@ -867,14 +890,17 @@ var webList = [];
 var zeroSevenList = [];
 var adList = [];
 var overseaList = [];
+var badList = [];
 
 var totalScore = 0
 
+//각 유형별 문자 갯수들
 var urlSMS = 0;
 var webSMS = 0;
 var zeroSevenSMS = 0;
 var adSMS = 0;
 var overseaSMS = 0;
+var badSMS = 0;
 
 
 var i = 0;
@@ -889,6 +915,7 @@ export default {
         return{
           score_number: totalScore,
           level:0,
+          isLoading: false,
         
             timeTabsCurrentItem:0,
             smsDetailPageToggle:false,
@@ -907,7 +934,7 @@ export default {
             zeroSevenSMS:0,
             adSMS:0,
             overseaSMS:0,
-
+            badSMS: 0,
             uisimSMS: 0,
 
             drawer: false,
@@ -1018,7 +1045,7 @@ export default {
                 justifyContent: 'center', 
                 
                 width:'100%', 
-                height:'10%',
+                height:'20%',
                 backgroundColor: 'chartreuse', 
             },
             backButtonStyle:{
@@ -1174,6 +1201,7 @@ export default {
           return this.typeSections.sort(compareSection);
       }
     },
+   
     methods:{
         theFormat(number) {
             return number.toFixed(2);
@@ -1184,9 +1212,17 @@ export default {
         playAnimation() {
             this.$refs.number1.restart();
         },
+        async isLoadingToggle(){
+           this.isLoading = !this.isLoading;
+        },
 
         async phishingAnalysis(){
+          // this.isLoading = true;
+
           await this.developerOptionToggle();
+
+          // this.isLoading = false;
+
           this.GahyeonSmsDetailPageToggle = !this.GahyeonSmsDetailPageToggle;
           this.playAnimation();
         },
@@ -1227,7 +1263,6 @@ export default {
 
             await this.cordovaGetPhoneBook();
             await this.cordovaGetFullSMS();
-            
             await this.cordovaGetNotBookedSMS();
             await this.cordovaGetBookedSMS();
             await this.cordovaGetURLSmsHashMap();
@@ -1245,6 +1280,7 @@ export default {
             this.zeroSevenSMS = zeroSevenList.length-1;
             this.adSMS = adList.length-1;
             this.overseaSMS = overseaList.length-1;
+            this.badSMS = badList.length - 1;
             
             
             this.setTypePage();
@@ -1279,6 +1315,7 @@ export default {
             zeroSevenList = [];
             adList = [];
             overseaList = [];
+            badList = [];
 
             //코르도바 플러그인을 돌려주는데 데이터를 가져오면서 리스트에 동시에 넣어줍니다.
             await this.cordovaGetPhoneBook();
@@ -1290,6 +1327,8 @@ export default {
             await this.cordovaGetZeroSevenSmsHashMap();
             await this.cordovaGetAdSmsHashMap();
             await this.cordovaGetOverseaSmsHashMap();
+            await this.cordovaGetBadSmsHashMap();
+          
 
             //각각 문자 종류 별 갯수도 지정해주고.
             this.fullSMS = fullSmsList.length-1;
@@ -1301,6 +1340,7 @@ export default {
             this.zeroSevenSMS = zeroSevenList.length-1;
             this.adSMS = adList.length-1;
             this.overseaSMS = overseaList.length-1;
+            this.badSMS = badList.length-1;
             
             //유형페이지도 최신화 해줍니다.
             this.setTypePage();
@@ -1411,6 +1451,15 @@ export default {
             }
         },
 
+        getBadSMS(){
+          this.vforList.splice(0);
+          i=0;
+          while(i < this.badSMS){
+              this.vforList.push({number: badList[i]});
+              i++;
+          }
+        },
+
         //////////// 코르도바 플러그인 메소드들 
         async cordovaGetTotalScore(){
             return new Promise(function(resolve, reject){
@@ -1472,10 +1521,19 @@ export default {
                 cordova.exec(function_getOverseaSmsHashMap, null,"CordovaCustomPlugin", "getOverseaSmsHashMap", []);
                 resolve();
             });
+        },
+        async cordovaGetBadSmsHashMap(){
+             return new Promise(function (resolve, reject){
+                cordova.exec(function_getBadSmsHashMap, null,"CordovaCustomPlugin", "getBadSmsHashMap", []);
+                resolve();
+            });
         }
     }
 }
 
+function function_getBadSmsHashMap(result){
+  badList = result.split('^&');
+}
 
 function getTotalScore(result){
   // this.level = 5;
@@ -1483,7 +1541,7 @@ function getTotalScore(result){
 }
 function function_getURLSmsHashMap(result){
     urlList = result.split('^&');
-    this.rankList.push({title:'씨벌', number: '6974', color:'#f59b25'});
+    this.rankList.push({title:'d', number: '6', color:'#f59b25'});
 }
 
 function function_getWebSmsHashMap(result){
@@ -1519,6 +1577,58 @@ function function_getBookedSMS(result){
 </script>
 
 <style scoped>
+#catFace_img{
+  height: 90%;
+}
+
+.bottom_sheet_sized_box{
+  flex: 1 1 0;
+}
+#bottom_sheet_menu_icon{
+  flex: 1 1 0;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+
+  background-color: grey;
+}
+
+#bottom_sheet_button_row{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: white;
+}
+
+#bottom_sheet_button_column{
+  /* background-color: grey; */
+  width: 70%;
+}
+#bottom_sheet_button_title{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  width: 100%;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+
+  background-color: grey;
+  color:white;
+}
+
+#bottom_sheet_div{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+#bottom_sheet_button{
+  background-color:grey;
+  width: 50%;
+}
 
 .typeNumberCSS_URL{
   color: #7bcabf;
@@ -1706,8 +1816,9 @@ function function_getBookedSMS(result){
 }
 
 #home_cat {
-  flex: 4 1 0;
+  flex: 4.3 1 0;
   width: 90%;
+  /* background-color: #009944; */
 }
 
 #home_score_column{
@@ -1841,9 +1952,9 @@ function function_getBookedSMS(result){
 
 #bottom_sheet{
 	width: 100%;
-	flex: 1.5 1 0;
-	background-color: white;
-    position: relative;
+	/* flex: 1.5 1 0; */
+	/* background-color:#763931; */
+  position: relative;
 }
 /***********************************************************/
 
@@ -1867,13 +1978,24 @@ function function_getBookedSMS(result){
   /* background-color: darkkhaki; */
 }
 
+.background_question {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 100%;
+    background-image: url('assets/background_question.png');
+    background-repeat: repeat;
+	background-position-y: -10%;
+}
+
 .background_fish {
     display: flex;
     align-items: center;
     justify-content: center;
 
     height: 100%;
-    background-image: url('assets/background.svg');
+    background-image: url('assets/background_fish.svg');
     background-repeat: repeat;
 	background-position-y: -10%;
 }

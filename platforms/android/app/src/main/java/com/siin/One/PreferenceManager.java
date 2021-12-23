@@ -32,6 +32,15 @@ public class PreferenceManager {
         return context.getSharedPreferences(PREFERENCES_NAME, Context.MODE_PRIVATE);
     }
 
+
+    //키 값 있는지 체크
+    public static boolean checkKeyContain(Context context, String key){
+        SharedPreferences prefs = getPreferences(context);
+        if(prefs.contains(key)){
+            return true;
+        }
+        return false;
+    }
     /**
 
      * String 값 저장
@@ -47,9 +56,7 @@ public class PreferenceManager {
     public static void setString(Context context, String key, String value) {
 
         SharedPreferences prefs = getPreferences(context);
-
         SharedPreferences.Editor editor = prefs.edit();
-
         editor.putString(key, value);
 
         editor.commit();
