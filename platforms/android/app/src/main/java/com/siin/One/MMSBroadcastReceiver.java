@@ -1,21 +1,8 @@
 package com.siin.One;
 
 import android.content.BroadcastReceiver;
-import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
-import android.net.Uri;
-import android.os.Bundle;
-import android.telephony.SmsMessage;
-import android.text.TextUtils;
-import android.util.Log;
-import android.widget.Toast;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 
 public class MMSBroadcastReceiver extends BroadcastReceiver {
     private static final String TAG = "asdf";

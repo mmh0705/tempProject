@@ -1,9 +1,7 @@
 package com.siin.One;
 
 import android.content.Context;
-
 import android.content.SharedPreferences;
-
 
 
 /**

@@ -27,15 +27,13 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.provider.Settings;
-import android.support.annotation.Nullable;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
 
-import com.chaquo.python.PyObject;
-import com.chaquo.python.Python;
-import com.chaquo.python.android.AndroidPlatform;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
-import org.apache.cordova.CordovaActivity;
+import org.apache.cordova.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -74,25 +72,27 @@ public class MainActivity extends CordovaActivity
 
     void showDialog() {
         AlertDialog.Builder msgBuilder =
-            new AlertDialog.Builder(MainActivity.this)
-                    .setTitle("권한 받기")
-                    .setMessage("다른 앱 위에 그리기 권한에서 One앱을 허용해주세요")
-                    .setPositiveButton("권한 받기", new DialogInterface.OnClickListener() {
-                        @Override public void onClick(DialogInterface dialogInterface, int i) {
-                            getPermissions();
-                        }
-                    }) .setNegativeButton("앱 종료", new DialogInterface.OnClickListener() {
-                @Override public void onClick(DialogInterface dialogInterface, int i) {
-                    finish();
-                }
-                    });
+                new AlertDialog.Builder(MainActivity.this)
+                        .setTitle("권한 받기")
+                        .setMessage("다른 앱 위에 그리기 권한에서 One앱을 허용해주세요")
+                        .setPositiveButton("권한 받기", new DialogInterface.OnClickListener() {
+                            @Override public void onClick(DialogInterface dialogInterface, int i) {
+                                getPermissions();
+                            }
+                        }) .setNegativeButton("앱 종료", new DialogInterface.OnClickListener() {
+                    @Override public void onClick(DialogInterface dialogInterface, int i) {
+                        finish();
+                    }
+                });
         AlertDialog msgDlg = msgBuilder.create(); msgDlg.show();
     }
 
 
+    private ActivityResultLauncher<Intent> resultLauncher;
+
     public void goSetting() {  //버튼을 클릭 했을 때
         Intent intent= new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION);
-        startActivityForResult(intent,0);   //startActivityForResult() 는 호출한 Activity로 부터 결과를 받을 경우 사용.
+        resultLauncher.launch(intent); //startActivityForResult() 는 호출한 Activity로 부터 결과를 받을 경우 사용.
     }
 
     // 설정 화면을 갔다오면 실행되는 메소드
@@ -103,8 +103,8 @@ public class MainActivity extends CordovaActivity
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
-
         super.onCreate(savedInstanceState);
+
         contextOfApplication = getApplicationContext();
 
         int result;
@@ -129,40 +129,4 @@ public class MainActivity extends CordovaActivity
         // Set by <content src="index.html" /> in config.xml
         loadUrl(launchUrl);
     }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-
-        String number = "";
-        String text = "";
-        ArrayList<SMSBook> list = new ArrayList<SMSBook>();
-        list = DataCenter.getInstance().getSmsBookList();
-        int i = 0;
-        int max = list.size();
-        while(i<max){
-            number = number + list.get(i).getNumber() + "#";
-            text = text + list.get(i).getText() + "#";
-            i++;
-        }
-
-        PreferenceManager.setString(this,"number", number);
-        PreferenceManager.setString(this,"text", text);
-        PreferenceManager.setInt(this,"size", list.size());
-        list.clear();
-    }
-
-//    private long time= 0;
-//
-//    @Override
-//
-//    public void onBackPressed(){
-//
-//        if(System.currentTimeMillis() - time >= 2000){
-//            time=System.currentTimeMillis();
-//            Toast.makeText(getApplicationContext(),"한번더 누르면 종료됩니다.", Toast.LENGTH_SHORT).show();
-//        } else if(System.currentTimeMillis() - time < 2000 ){
-//            finish();
-//        }
-//    }
 }

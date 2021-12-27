@@ -2,8 +2,6 @@ package com.siin.One;
 
 import android.app.Service;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.graphics.PixelFormat;
 import android.graphics.drawable.Drawable;
 import android.os.IBinder;
@@ -18,11 +16,8 @@ import android.widget.TextView;
 import com.chaquo.python.PyObject;
 import com.chaquo.python.Python;
 import com.chaquo.python.android.AndroidPlatform;
-import com.siin.One.HashMapDetail.HashMapDetail_SMS;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 
 public class popUpService extends Service {

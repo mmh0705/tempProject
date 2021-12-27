@@ -5,8 +5,10 @@ import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
 import android.provider.ContactsContract;
-import android.text.format.DateFormat;
-import android.widget.Toast;
+
+import com.chaquo.python.PyObject;
+import com.chaquo.python.Python;
+import com.chaquo.python.android.AndroidPlatform;
 
 import com.siin.One.HashMapDetail.HashMapDetail_PhoneBook;
 import com.siin.One.HashMapDetail.HashMapDetail_SMS;
@@ -16,12 +18,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.Locale;
-import java.util.Map;
-
-import com.chaquo.python.PyObject;
-import com.chaquo.python.Python;
-import com.chaquo.python.android.AndroidPlatform;
 
 public class DataCenter {
   ArrayList<SMSBook> smsBookList = new ArrayList<SMSBook>();
