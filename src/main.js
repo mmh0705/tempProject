@@ -17,6 +17,22 @@ import 'material-design-icons-iconfont/dist/material-design-icons.css'
 
 import VueNumber from 'vue-number-animation'
 
+import 'firebase/auth';
+Vue.prototype.recaptchaVerifier = window.recaptchaVerifier;
+
+// import { initializeApp } from "firebase/app";
+
+// const firebaseConfig = {
+//   apiKey: "AIzaSyCUNwu_eqDg7SSNv2qx6Obl0FbAi5_bokE",
+//   authDomain: "vue-js-wekat.firebaseapp.com",
+//   projectId: "vue-js-wekat",
+//   storageBucket: "vue-js-wekat.appspot.com",
+//   messagingSenderId: "774271357841",
+//   appId: "1:774271357841:web:b18c6c8e5f8826c6d4c030",
+//   measurementId: "G-NQ5JQL7L2Y"
+// };
+
+// const app = initializeApp(firebaseConfig);
 
 const ENV = { isNative: false };
 
@@ -46,6 +62,7 @@ function onServiceReady() {
     template: "<App/>",
   });
 }
+
 
 const onDeviceReady = () => {
   console.log("Running Cordova" + cordova.platformId + "@" + cordova.version);

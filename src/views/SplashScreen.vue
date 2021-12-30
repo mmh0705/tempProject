@@ -9,9 +9,13 @@
         </div>
 
         <div class='main_btnSection'>
-            <div class='main_btnSection_btn' v-on:click="goHome">
+            <div class='main_btnSection_btn' v-on:click="goLogin">
                 <div id=main_btnSection_btn_text><b>시작하기</b></div>
             </div>
+        </div>
+
+        <div id='addFirestore' v-on:click="test">
+            dddd
         </div>
 
         <div class='main_space_two'></div>
@@ -21,6 +25,36 @@
 </template>
 
 <script>
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+import { getFirestore, collection, getDocs, doc, setDoc } from 'firebase/firestore/lite';
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCUNwu_eqDg7SSNv2qx6Obl0FbAi5_bokE",
+  authDomain: "vue-js-wekat.firebaseapp.com",
+  projectId: "vue-js-wekat",
+  storageBucket: "vue-js-wekat.appspot.com",
+  messagingSenderId: "774271357841",
+  appId: "1:774271357841:web:b18c6c8e5f8826c6d4c030",
+  measurementId: "G-NQ5JQL7L2Y"
+};
+
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+const db = getFirestore(app);
+
+
+
+// To apply the default browser preference instead of explicitly setting it.
+// firebase.auth().useDeviceLanguage();
+function happy(){
+    setDoc(doc(db, "cities", "LA"), {
+        name: "Los Angeles",
+        state: "CA",
+        country: "USA"
+    });
+}
+
 export default {
     data: function(){
         return{
@@ -28,9 +62,19 @@ export default {
         }
 	},
 	methods: {
+        goLogin(){
+            this.$router.push('/login')
+        },
 		goHome(){
             this.$router.push('/home')
-		}
+		},
+        async test(){
+            await setDoc(doc(db, "cities", "LA"), {
+                name: "Los Angeles",
+                state: "CA",
+                country: "USA"
+            });
+        }
 	}
 }
 </script>
@@ -54,6 +98,10 @@ export default {
   }
 }
 
+#addFirestore{
+    background-color: aliceblue;
+    width: 50%;
+}
 
 #main_btnSection_btn_text{
     animation-name: fadeOut;
