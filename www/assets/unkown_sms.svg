@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="90" height="29.7" viewBox="0 0 90 29.7">
+  <g data-name="Unkown SMS">
+    <g data-name="그룹 911">
+      <text data-name="Unkown SMS" transform="translate(51 30)" style="font-size:13px;font-family:YDIYGO330">
+        <tspan x="-5.98" y="11">건</tspan>
+      </text>
+      <text data-name="Unkown SMS score" transform="translate(27 30)" style="fill:#ff9e01;font-size:13px;font-family:YDIYGO330">
+        <tspan x="-10.959" y="11">123</tspan>
+      </text>
+    </g>
+    <g data-name="사각형 389" style="fill:rgba(250,225,0,.11);stroke:#fae100">
+      <rect width="90" height="26" rx="13" style="stroke:none" />
+      <rect x=".5" y=".5" width="89" height="25" rx="12.5" style="fill:none" />
+    </g>
+    <text data-name="Unkown SMS text" transform="translate(9 16)" style="font-size:11px;font-family:YDIYGO350;fill:#ff9e01">
+      <tspan x="0" y="0">알 수 없는 문자</tspan>
+    </text>
+  </g>
+</svg>

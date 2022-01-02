@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="382" height="138" viewBox="0 0 382 138">
+    <defs>
+        <clipPath id="clip-path">
+            <path style="fill:none" d="M0 0h382v138H0z"/>
+        </clipPath>
+        <style>
+            .cls-3{fill:#ff7000;font-size:20px;font-family:NotoSansCJKkr-Regular,Noto Sans CJK KR;opacity:.1}
+        </style>
+    </defs>
+    <g id="background" style="clip-path:url(#clip-path)">
+        <g transform="translate(13 -79)">
+            <text id="caution" class="cls-3" transform="translate(-13 79)"><tspan x="0" y="23">caution</tspan></text>
+        </g>
+        <g transform="translate(111 -79)">
+            <text id="caution-2" data-name="caution" class="cls-3" transform="translate(-13 79)"><tspan x="0" y="23">caution</tspan></text>
+        </g>
+        <g transform="translate(209 -79)">
+            <text id="caution-3" data-name="caution" class="cls-3" transform="translate(-13 79)"><tspan x="0" y="23">caution</tspan></text>
+        </g>
+        <g transform="translate(307 -79)">
+            <text id="caution-4" data-name="caution" class="cls-3" transform="translate(-13 79)"><tspan x="0" y="23">caution</tspan></text>
+        </g>
+        <g transform="translate(13 -27)">
+            <text id="caution-5" data-name="caution" class="cls-3" transform="translate(-13 79)"><tspan x="0" y="23">caution</tspan></text>
+        </g>
+        <g transform="translate(111 -27)">
+            <text id="caution-6" data-name="caution" class="cls-3" transform="translate(-13 79)"><tspan x="0" y="23">caution</tspan></text>
+        </g>
+        <g transform="translate(209 -27)">
+            <text id="caution-7" data-name="caution" class="cls-3" transform="translate(-13 79)"><tspan x="0" y="23">caution</tspan></text>
+        </g>
+        <g transform="translate(307 -27)">
+            <text id="caution-8" data-name="caution" class="cls-3" transform="translate(-13 79)"><tspan x="0" y="23">caution</tspan></text>
+        </g>
+        <g transform="translate(13 25)">
+            <text id="caution-9" data-name="caution" class="cls-3" transform="translate(-13 79)"><tspan x="0" y="23">caution</tspan></text>
+        </g>
+        <g transform="translate(111 25)">
+            <text id="caution-10" data-name="caution" class="cls-3" transform="translate(-13 79)"><tspan x="0" y="23">caution</tspan></text>
+        </g>
+        <g transform="translate(209 25)">
+            <text id="caution-11" data-name="caution" class="cls-3" transform="translate(-13 79)"><tspan x="0" y="23">caution</tspan></text>
+        </g>
+        <g transform="translate(307 25)">
+            <text id="caution-12" data-name="caution" class="cls-3" transform="translate(-13 79)"><tspan x="0" y="23">caution</tspan></text>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128.199" height="157.581" viewBox="0 0 128.199 157.581">
+    <defs>
+        <style>
+            .cls-1,.cls-3{fill:#fff;stroke:#0473e1;stroke-miterlimit:10}.cls-3{fill:none;stroke:#000;stroke-width:5px}
+        </style>
+    </defs>
+    <g id="CAT">
+        <path id="background_white_" data-name="background(white)" class="cls-1" d="M870.456 427c0 9.045-.264 9.127-5.657 16.148-9.247 12.038-27.995 23.321-46.023 23.321-17.635 0-35.851-10.527-45.177-22.126-5.768-7.174-6.5-7.961-6.5-17.343 0-24.553 23.138-44.458 51.68-44.458S870.456 402.45 870.456 427z" transform="translate(-763.475 -309.391)"/>
+        <path id="background_blue_" data-name="background(blue)" d="M854.687 315.754c6.972-26.034 34.99-30.9 34.99-30.9l-22.267-7.4c-8.13 4.553-16.385 13.158-20.241 31.3a47.951 47.951 0 0 0-30.142-11 46.021 46.021 0 0 0-18.945 4.106c9.112-21.235 33.088-25.4 33.088-25.4l-22.267-7.4c-9.249 5.179-18.657 15.6-21.571 39.34-15.537 12.192-25.853 33.665-25.853 58.123a83.152 83.152 0 0 0 3.813 25.084c1.679-22.7 21.731-12.418 21.731-12.418 4.955-8.21 7.859-22.693 30-21.377s29.777 21.379 29.777 21.379 20.4-10.464 21.769 13.011a83.022 83.022 0 0 0 4.006-25.677c0-20.094-6.963-38.173-18.063-50.746z" transform="translate(-761.479 -269.062)" style="fill:#0473e1"/>
+        <circle id="Cat_s_nose" data-name="Cat's nose" cx="10.204" cy="10.204" transform="translate(45.623 112.935)" r="10.204"/>
+        <path id="Cat_s_pupils_white_" data-name="Cat's pupils(white)" class="cls-1" d="M845.478 360.954c-10.931 0-20.07 10.469-22.369 24.478-2.3-14.008-11.438-24.478-22.369-24.478-12.665 0-22.932 14.05-22.932 31.381s10.267 31.381 22.932 31.381c10.931 0 20.07-10.469 22.369-24.478 2.3 14.009 11.438 24.478 22.369 24.478 12.665 0 22.932-14.05 22.932-31.381s-10.267-31.381-22.932-31.381z" transform="translate(-767.282 -301.718)"/>
+        <g id="Cat_s_eye_left_" data-name="Cat's eye(left)" transform="translate(25.651 85.097)">
+            <path id="Cat_s_eye_left_2_" data-name="Cat's eye(left 2)" class="cls-3" d="M17.309 0 0 17.309"/>
+            <path id="Cat_s_eye_left_1_" data-name="Cat's eye(left 1)" class="cls-3" d="m0 0 17.309 17.309"/>
+        </g>
+        <g id="Cat_s_eye_right_" data-name="Cat's eye(right)" transform="translate(69.96 85.097)">
+            <path id="Cat_s_eye_right_2_" data-name="Cat's eye(right 2)" class="cls-3" d="M17.309 0 0 17.309"/>
+            <path id="Cat_s_eye_right_1_" data-name="Cat's eye(right 1)" class="cls-3" d="m0 0 17.309 17.309"/>
+        </g>
+    </g>
+</svg>

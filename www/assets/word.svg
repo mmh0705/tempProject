@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="39.158" height="71.524" viewBox="0 0 39.158 71.524">
+  <defs>
+    <style>
+      .cls-1, .cls-4, .cls-5 {
+        fill: none;
+        stroke: #d3cfcf;
+      }
+
+      .cls-1, .cls-5 {
+        stroke-width: 0.7px;
+      }
+
+      .cls-2, .cls-6 {
+        font-size: 13px;
+      }
+
+      .cls-2 {
+        font-family: YDIYGO350;
+      }
+
+      .cls-3 {
+        clip-path: url(#clip-path);
+      }
+
+      .cls-4, .cls-5 {
+        stroke-miterlimit: 10;
+      }
+
+      .cls-6 {
+        fill: #0473e1;
+        font-family: BerlinSansFBDemi-Bold, Berlin Sans FB;
+        font-weight: 700;
+      }
+    </style>
+    <clipPath id="clip-path">
+      <rect id="사각형_371" data-name="사각형 371" class="cls-1" width="39.158" height="51.575"/>
+    </clipPath>
+  </defs>
+  <g id="Word" transform="translate(-295 -585.55)">
+    <text id="Word-2" data-name="Word" class="cls-2" transform="translate(327 653.074)"><tspan x="-23.92" y="0">단어</tspan></text>
+    <g id="Word_icon" data-name="Word icon" transform="translate(6)">
+      <g id="그룹_884" data-name="그룹 884" class="cls-3" transform="translate(289 585.55)">
+        <rect id="사각형_370" data-name="사각형 370" class="cls-4" width="33.345" height="46.284" transform="translate(5.685 5.164)"/>
+        <path id="패스_591" data-name="패스 591" class="cls-5" d="M3.278,46.783H.5V.5H33.845V2.931" transform="translate(-0.372 -0.372)"/>
+      </g>
+      <text id="A" class="cls-6" transform="translate(299.438 625.815)"><tspan x="0" y="0">A</tspan></text>
+      <text id="B" class="cls-6" transform="translate(306.266 609.202)"><tspan x="0" y="0">B</tspan></text>
+      <text id="C" class="cls-6" transform="translate(315.151 621.101)"><tspan x="0" y="0">C</tspan></text>
+    </g>
+  </g>
+</svg>

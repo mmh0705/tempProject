@@ -9,8 +9,8 @@
   },
   "info.androidwekat.plugins.custom": {
     "source": {
-      "type": "local",
-      "path": "C:\\Users\\u210813\\WEKaT_Project\\real\\tempProject\\node_modules\\info.androidwekat.plugins.custom"
+      "type": "registry",
+      "id": "file:CordovaCustomAuthPlugin"
     },
     "is_top_level": true,
     "variables": {}

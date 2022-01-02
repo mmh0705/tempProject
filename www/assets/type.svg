@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="48.131" height="71.45" viewBox="0 0 48.131 71.45">
+    <defs>
+        <clipPath id="a">
+            <path data-name="사각형 369" style="fill:none" d="M0 0h48.131v51.575H0z"/>
+        </clipPath>
+    </defs>
+    <text data-name="Type" transform="translate(25.754 67.45)" style="font-size:13px;font-family:YDIYGO350"><tspan x="-11.96" y="0">유형</tspan></text>
+    <g data-name="Type icon">
+        <g data-name="그룹 882" style="clip-path:url(#a)">
+            <path data-name="패스 589" d="M240.14 4.6A23.955 23.955 0 0 0 225.995 0v24.065z" transform="translate(-200.781)" style="fill:#0473e1"/>
+            <path data-name="패스 590" d="M46.957 47.5a24.114 24.114 0 0 0-8.747-12.031L24.065 54.937V30.872A24.048 24.048 0 1 0 46.957 47.5" transform="translate(0 -27.428)" style="fill:#ececec"/>
+        </g>
+    </g>
+</svg>

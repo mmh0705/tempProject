@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="73" height="29.7" viewBox="0 0 73 29.7">
+  <g data-name="Receive SMS">
+    <g data-name="사각형 388" style="fill:rgba(0,153,68,.07);stroke:#094">
+      <rect width="73" height="26" rx="13" style="stroke:none" />
+      <rect x=".5" y=".5" width="72" height="25" rx="12.5" style="fill:none" />
+    </g>
+    <text data-name="Receive SMS score" transform="translate(18 30)" style="font-size:13px;font-family:YDIYGO330;fill:#094">
+      <tspan x="-10.959" y="11">123</tspan>
+    </text>
+    <text data-name="Receive SMS" transform="translate(42 30)" style="font-size:13px;font-family:YDIYGO330">
+      <tspan x="-5.98" y="11">건</tspan>
+    </text>
+    <text data-name="Receive SMS text" transform="translate(8 16)" style="font-size:11px;font-family:YDIYGO350;fill:#094">
+      <tspan x="0" y="0">총 수신 문자</tspan>
+    </text>
+  </g>
+</svg>
