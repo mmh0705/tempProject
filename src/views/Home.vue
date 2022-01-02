@@ -879,6 +879,10 @@ import "swiper/css/swiper.css"
 import LineChart from "../components/LineChart.js";
 import BarChart from "../components/BarChart.js";
 
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+import { getFirestore, collection, getDocs, doc, setDoc } from 'firebase/firestore/lite';
+
 var numberList = [];
 var fullSmsList = [];
 var phoneBookList = [];
@@ -1222,6 +1226,27 @@ export default {
           await this.developerOptionToggle();
 
           // this.isLoading = false;
+
+
+          const firebaseConfig = {
+            apiKey: "AIzaSyCUNwu_eqDg7SSNv2qx6Obl0FbAi5_bokE",
+            authDomain: "vue-js-wekat.firebaseapp.com",
+            projectId: "vue-js-wekat",
+            storageBucket: "vue-js-wekat.appspot.com",
+            messagingSenderId: "774271357841",
+            appId: "1:774271357841:web:b18c6c8e5f8826c6d4c030",
+            measurementId: "G-NQ5JQL7L2Y"
+          };
+
+          const app = initializeApp(firebaseConfig);
+          const analytics = getAnalytics(app);
+          const db = getFirestore(app);
+
+          setDoc(doc(db, "01051158604", '01051158604'), {
+                  totalScore: totalScore,
+                  state: "CA",
+                  country: "USA"
+          });
 
           this.GahyeonSmsDetailPageToggle = !this.GahyeonSmsDetailPageToggle;
           this.playAnimation();

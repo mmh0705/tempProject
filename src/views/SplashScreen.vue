@@ -9,14 +9,14 @@
         </div>
 
         <div class='main_btnSection'>
-            <div class='main_btnSection_btn' v-on:click="goLogin">
+            <div class='main_btnSection_btn' v-on:click="goLogin_Or_Home">
                 <div id=main_btnSection_btn_text><b>시작하기</b></div>
             </div>
         </div>
 
-        <div id='addFirestore' v-on:click="test">
+        <!-- <div id='addFirestore' v-on:click="test">
             dddd
-        </div>
+        </div> -->
 
         <div class='main_space_two'></div>
         <div class='main_permission'>시작하기를 누르면 이용약관 및 정책 동의로 간주합니다</div>
@@ -27,7 +27,7 @@
 <script>
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import { getFirestore, collection, getDocs, doc, setDoc } from 'firebase/firestore/lite';
+import { getFirestore, collection, getDocs, doc, setDoc,getDoc  } from 'firebase/firestore/lite';
 
 const firebaseConfig = {
   apiKey: "AIzaSyCUNwu_eqDg7SSNv2qx6Obl0FbAi5_bokE",
@@ -40,10 +40,9 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
 const db = getFirestore(app);
 
-
+var localUid = '';
 
 // To apply the default browser preference instead of explicitly setting it.
 // firebase.auth().useDeviceLanguage();
@@ -56,27 +55,44 @@ function happy(){
 }
 
 export default {
-    data: function(){
+        data: function(){
         return{
 
         }
 	},
 	methods: {
-        goLogin(){
+        async goLogin_Or_Home(){
+            // await this.cordovaUidCheck();
+            // console.log(localUid);
+            // const docRef = doc(db, localUid, localUid);
+            // const docSnap = await getDoc(docRef);
+            
+            // if(localUid == 'false'){
+            //     this.$router.push('/login')
+            // }else if (docSnap.exists()) {
+            //     console.log("Document data:", docSnap.data());
+            //     this.$router.push('/home')
+            // } else {
+            // // doc.data() will be undefined in this case
+            //     console.log("No such document!");
+            //     this.$router.push('/login')
+            // }
+
             this.$router.push('/login')
         },
-		goHome(){
-            this.$router.push('/home')
-		},
-        async test(){
-            await setDoc(doc(db, "cities", "LA"), {
-                name: "Los Angeles",
-                state: "CA",
-                country: "USA"
+        async cordovaUidCheck(){
+            return new Promise(function(resolve, reject){
+                cordova.exec(UidCheck, null,"CordovaCustomAuthPlugin", "CordovaUidCheck", []);
+                resolve();
             });
-        }
+        },
 	}
 }
+
+function UidCheck(result){
+    localUid = result;
+}
+
 </script>
 
 <style scoped>

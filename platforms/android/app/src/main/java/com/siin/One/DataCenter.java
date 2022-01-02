@@ -420,35 +420,35 @@ public class DataCenter {
         //머신러닝
         //        String a = "";
 
-        if(PreferenceManager.checkKeyContain(MainActivity.getContextOfApplication(),""+c.getLong(4))){
-          System.out.println("할러할러할러"+PreferenceManager.getString(MainActivity.getContextOfApplication(),""+c.getLong(4)));
-          tempSingleScore = 0;
-          hmds.setBody(hmds.getBody() + " ## " + PreferenceManager.getString(MainActivity.getContextOfApplication(),""+c.getLong(4)));
-          if(badSmsHashMap.containsKey(c.getString(2))){
-            badSmsHashMap.get(c.getString(2)).add(hmds);
-          }else {
-            ArrayList<HashMapDetail_SMS> list = new ArrayList<>();
-            list.add(hmds);
-            badSmsHashMap.put(c.getString(2), list);
-          }
-          badCount++;
-        }else{
-          System.out.println("아녀아녀아녀"+PreferenceManager.getString(MainActivity.getContextOfApplication(),""+c.getLong(4)));
-
-          String b = pyo2.callAttr("main",hmds.getBody()).toString();
-          if(!b.equals("피싱이 아닙니다.")){
-            tempSingleScore = 0;
-            hmds.setBody(hmds.getBody() + " ## " + b);
-            if(badSmsHashMap.containsKey(c.getString(2))){
-              badSmsHashMap.get(c.getString(2)).add(hmds);
-            }else {
-              ArrayList<HashMapDetail_SMS> list = new ArrayList<>();
-              list.add(hmds);
-              badSmsHashMap.put(c.getString(2), list);
-            }
-            badCount++;
-          }
-        }
+//        if(PreferenceManager.checkKeyContain(MainActivity.getContextOfApplication(),""+c.getLong(4))){
+//          System.out.println("할러할러할러"+PreferenceManager.getString(MainActivity.getContextOfApplication(),""+c.getLong(4)));
+//          tempSingleScore = 0;
+//          hmds.setBody(hmds.getBody() + " ## " + PreferenceManager.getString(MainActivity.getContextOfApplication(),""+c.getLong(4)));
+//          if(badSmsHashMap.containsKey(c.getString(2))){
+//            badSmsHashMap.get(c.getString(2)).add(hmds);
+//          }else {
+//            ArrayList<HashMapDetail_SMS> list = new ArrayList<>();
+//            list.add(hmds);
+//            badSmsHashMap.put(c.getString(2), list);
+//          }
+//          badCount++;
+//        }else{
+//          System.out.println("아녀아녀아녀"+PreferenceManager.getString(MainActivity.getContextOfApplication(),""+c.getLong(4)));
+//
+//          String b = pyo2.callAttr("main",hmds.getBody()).toString();
+//          if(!b.equals("피싱이 아닙니다.")){
+//            tempSingleScore = 0;
+//            hmds.setBody(hmds.getBody() + " ## " + b);
+//            if(badSmsHashMap.containsKey(c.getString(2))){
+//              badSmsHashMap.get(c.getString(2)).add(hmds);
+//            }else {
+//              ArrayList<HashMapDetail_SMS> list = new ArrayList<>();
+//              list.add(hmds);
+//              badSmsHashMap.put(c.getString(2), list);
+//            }
+//            badCount++;
+//          }
+//        }
 //        if(checkNoMachine == false){
 //
 //        }

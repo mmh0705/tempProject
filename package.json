@@ -15,6 +15,7 @@
     "bootstrap": "^5.1.0",
     "bootstrap-vue": "^2.21.2",
     "chart.js": "^2.9.4",
+    "cordova": "^11.0.0",
     "firebase": "^9.6.1",
     "firebaseui": "^6.0.0",
     "jquery": "^3.6.0",
@@ -39,6 +40,7 @@
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.3.2",
     "info.androidabcd.plugins.custom": "file:CordovaCustomPlugin",
+    "info.androidwekat.plugins.custom": "file:CordovaCustomAuthPlugin",
     "sass": "~1.32",
     "sass-loader": "^12.3.0",
     "style-loader": "^3.2.1",
@@ -68,7 +70,8 @@
       "android"
     ],
     "plugins": {
-      "info.androidabcd.plugins.custom": {}
+      "info.androidabcd.plugins.custom": {},
+      "info.androidwekat.plugins.custom": {}
     }
   },
   "main": "webpack.config.js",

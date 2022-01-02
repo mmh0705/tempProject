@@ -9,6 +9,9 @@
   "installed_plugins": {
     "info.androidabcd.plugins.custom": {
       "PACKAGE_NAME": "com.siin.One"
+    },
+    "info.androidwekat.plugins.custom": {
+      "PACKAGE_NAME": "com.siin.One"
     }
   },
   "dependent_plugins": {}

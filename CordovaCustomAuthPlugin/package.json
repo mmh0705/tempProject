@@ -1,0 +1,17 @@
+{
+  "name": "info.androidwekat.plugins.custom",
+  "version": "1.0.0",
+  "description": "wekat auth plugin",
+  "cordova": {
+    "id": "info.androidwekat.plugins.custom",
+    "platforms": [
+      "android"
+    ]
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-android"
+  ],
+  "author": "siin_Danny",
+  "license": "ISC"
+}

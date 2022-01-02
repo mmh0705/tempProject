@@ -11,6 +11,10 @@
             {
               "xml": "<feature name=\"CordovaCustomPlugin\"><param name=\"android-package\" value=\"info.androidabcd.plugins.custom.CordovaCustomPlugin\" /></feature>",
               "count": 1
+            },
+            {
+              "xml": "<feature name=\"CordovaCustomAuthPlugin\"><param name=\"android-package\" value=\"info.androidwekat.plugins.custom.CordovaCustomAuthPlugin\" /></feature>",
+              "count": 1
             }
           ]
         }
@@ -19,6 +23,9 @@
   },
   "installed_plugins": {
     "info.androidabcd.plugins.custom": {
+      "PACKAGE_NAME": "com.siin.One"
+    },
+    "info.androidwekat.plugins.custom": {
       "PACKAGE_NAME": "com.siin.One"
     }
   },
@@ -31,9 +38,18 @@
       "clobbers": [
         "cordova.plugins.CordovaCustomPlugin"
       ]
+    },
+    {
+      "id": "info.androidwekat.plugins.custom.CordovaCustomAuthPlugin",
+      "file": "plugins/info.androidwekat.plugins.custom/www/CordovaCustomAuthPlugin.js",
+      "pluginId": "info.androidwekat.plugins.custom",
+      "clobbers": [
+        "cordova.plugins.CordovaCustomAuthPlugin"
+      ]
     }
   ],
   "plugin_metadata": {
-    "info.androidabcd.plugins.custom": "1.0.0"
+    "info.androidabcd.plugins.custom": "1.0.0",
+    "info.androidwekat.plugins.custom": "1.0.0"
   }
 }
