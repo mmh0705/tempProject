@@ -1,4 +1,5 @@
 <template>
+<v-app>
     <div class='splash_container'>
         <div class='main_space_one'></div>
         <!-- <div class='main_titleMent'></div> -->
@@ -20,8 +21,11 @@
 
         <div class='main_space_two'></div>
         <div class='main_permission'>시작하기를 누르면 이용약관 및 정책 동의로 간주합니다</div>
+
+    
         
     </div>
+    </v-app>
 </template>
 
 <script>
@@ -214,6 +218,7 @@ div {
 .main_space_two{
     flex: 3 1 0;
     background-color: #0473e1;
+    /* background-color: #0473e1; */
 }
 .main_permission{
     flex: 1 1 0;

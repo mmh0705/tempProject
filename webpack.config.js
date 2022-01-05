@@ -51,7 +51,7 @@ module.exports = {
                 options: { esModule: true }
             },
             {
-                test: /\.css$/i,
+                test:  /\.s?[ac]ss$/,
                 use: [
                     'vue-style-loader',
                     'css-loader',
@@ -60,13 +60,11 @@ module.exports = {
                         // Requires sass-loader@^7.0.0
                         options: {
                           implementation: require('sass'),
-                          
                         },
                         // Requires >= sass-loader@^8.0.0
                         options: {
                           implementation: require('sass'),
                           sassOptions: {
-                            
                           },
                         },
                       },

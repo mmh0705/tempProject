@@ -1242,7 +1242,7 @@ export default {
           const analytics = getAnalytics(app);
           const db = getFirestore(app);
 
-          setDoc(doc(db, "01051158604", '01051158604'), {
+          setDoc(doc(db, "010-5115-8604", '010-5115-8604'), {
                   totalScore: totalScore,
                   state: "CA",
                   country: "USA"

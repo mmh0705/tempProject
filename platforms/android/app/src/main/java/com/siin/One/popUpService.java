@@ -1,6 +1,7 @@
 package com.siin.One;
 
 import android.app.Service;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.PixelFormat;
 import android.graphics.drawable.Drawable;
@@ -145,7 +146,8 @@ public class popUpService extends Service {
       String b = pyo2.callAttr("main",body).toString();
 
       if(!b.equals("피싱이 아닙니다.")){
-        Drawable drawable = getResources().getDrawable(R.drawable.layout_bg_only_top_radius_red);
+        Drawable drawable= this.getDrawable(R.drawable.layout_bg_only_top_radius_red);
+//        Drawable drawable = getResources().getDrawable(R.drawable.layout_bg_only_top_radius_red);
         alert_layout.setBackground(drawable);
         alert_textview.setText(b);
         PreferenceManager.setString(this,""+timestamp,b);

@@ -4,73 +4,111 @@
             <div id='main_section'>
                 
                 <div class = 'login_textfields'>
+                    <v-form
+                        ref="form"
+                        v-model="valid"
+                        lazy-validation
+                    >
                     <div class = 'textfield_title'>별명 (최대 6자)</div>
-                    <v-text-field
-                        filled
-                        outlined
-                        background-color="white"
-                    ></v-text-field>
-
-                    <div class = 'textfield_title'>출생연도</div>
-
-                    <div class = 'field_section'>
-                        <v-select
-                            :items="items"
+                        <v-text-field
+                            v-model="nick_name"
+                            filled
                             outlined
-                            hint="출생연도"
                             background-color="white"
-                        ></v-select>
-                        
-                        <span style="width:10%;"></span>
 
-                        <v-btn-toggle 
-                        v-model="toggle_exclusive"
-                        background-color="#0473e1"
+                            :rules="[rules.nickName_required, rules.counter]"
+                            required
+                            
                         >
-                            <v-btn>
-                                <span>남자</span>
-                            </v-btn>
+                            <!-- <v-icon v-if="" slot="append" color="green darken-2">
+                                check
+                            </v-icon> -->
+                        </v-text-field>
 
-                            <v-btn>
-                                <span>여자</span>
-                            </v-btn>
-                        </v-btn-toggle>
+                        <div class = 'textfield_title'>출생연도</div>
+
                         
-                    </div>
-                    
-                    
+                       
+                        <div class = 'field_section'>
+                            <v-select
+                                :items="items"
+                                v-model="birth_year"
+                                outlined
+                                label="출생연도"
+                                solo
+                                color="grey"
+                                background-color="white"
 
-                    <div class = 'textfield_title'>본의명의 휴대폰번호</div>
+                                :rules="[v => !!v || '출생연도를 골라주세요!']"
+                                required
+                            ></v-select>
+                            
+                            <span style="width:10%;"></span>
 
-                    <div class="field_section">
+                            <!-- <span>
+                                남자
+                            </span>
+                            <span>
+                                여자
+                            </span> -->
+                            <v-btn-toggle 
+                                v-model="toggle_exclusive"
+                                background-color="#0473e1"
+                            >
+                                <v-btn v-on:click="gender='남자'">
+                                    <span>남자</span>
+                                </v-btn>
+
+                                <v-btn v-on:click="gender='여자'">
+                                    <span>여자</span>
+                                </v-btn>
+                            </v-btn-toggle>
+                        </div>
+                        
+                        
+
+                        <div class = 'textfield_title'>본인명의 휴대폰번호</div>
+
+                        <div class="field_section">
+                            <v-text-field
+                                filled
+                                outlined
+                                solo
+                                background-color="white"
+                                v-model="phone_num"
+
+                                :rules="[rules.phoneNum_required]"
+                                required
+
+                                prefix="+82"
+                                oninput="javascript: this.value = this.value
+                                    .replace(/[^0-9]/, '')
+                                    .replace(/^(\d{2,3})(\d{3,4})(\d{4})$/, `$1-$2-$3`);"
+                            ></v-text-field>
+
+                            <span style="width:15%;"></span>
+
+                            <v-btn
+                                id = "validate_btn"
+                                rounded
+                                color="white"
+                                v-on:click="login"
+                            >
+                                인증하기
+                            </v-btn>
+                        </div>
+
+                        
+
+                        <div class = 'textfield_title'>인증번호 6자리</div>
                         <v-text-field
                             filled
                             outlined
                             background-color="white"
-                            v-model="phone_num"
+                            v-model="check_number"
                         ></v-text-field>
-
-                        <span style="width:10%;"></span>
-
-                        <v-btn
-                            id = "validate_btn"
-                            rounded
-                            color="white"
-                            v-on:click="login"
-                        >
-                            인증하기
-                        </v-btn>
-                    </div>
-
+                    </v-form>
                     
-
-                    <div class = 'textfield_title'>인증번호 6자리</div>
-                    <v-text-field
-                        filled
-                        outlined
-                        background-color="white"
-                        v-model="check_number"
-                    ></v-text-field>
 
                 </div>
             </div>
@@ -79,7 +117,9 @@
                 <v-btn
                     rounded
                     color="white"
-                    v-on:click="check_login"
+
+                    :disabled="!valid"
+                    @click="validate"
                 >
                     위캣 시작하기
                 </v-btn>
@@ -106,11 +146,20 @@
     import 'firebase/auth';
     import { getFirestore, collection, getDocs, doc, setDoc,getDoc  } from 'firebase/firestore/lite';
 
-
+    // const autoHyphen = (target) => {
+    //     target.value = target.value
+    //     .replace(/[^0-9]/, '')
+    //     .replace(/^(\d{2,3})(\d{3,4})(\d{4})$/, `$1-$2-$3`);
+    // }
     
     export default {
         data: function(){
             return{
+                nick_name: '',
+                birth_year:'',
+                gender: '',
+                valid: false,
+                
                 phone_num: '',
                 check_number: '',
                 items: [
@@ -122,12 +171,39 @@
                     '2001', '2000', '1999', '1998',
                     '1997', '1996', '1995', '1994',
                 ],
+                
+                rules: {
+                    nickName_required: value => !!value || '별명을 입력해주세요!',
+                    phoneNum_required: value => !!value || '전화 번호를 입력해주세요!',
+                    counter: value => value.length <= 6 || '6자 이하로 입력해주세요!',
+                    email: value => {
+                        const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+                        return pattern.test(value) || 'Invalid e-mail.'
+                    },
+                },
             }
 	    },
         
         methods: {
+            validate () {
+                if(this.$refs.form.validate() == true){
+                    console.log(this.nick_name);
+                    console.log(this.birth_year);
+                    console.log(this.gender);
+                    console.log(this.phone_num);
+
+                    this.check_login();
+                }else{
+
+                }
+            },
+            goHome(){
+                this.$router.push('/home');
+                console.log(this.phoneFomatter(this.phone_num));
+            },
             login(){
                 // console.log(this.phone_num);
+                var temp_phone_num = '+82-'+this.phone_num.substr(1);
                 const firebaseConfig = {
                     apiKey: "AIzaSyCUNwu_eqDg7SSNv2qx6Obl0FbAi5_bokE",
                     authDomain: "vue-js-wekat.firebaseapp.com",
@@ -139,7 +215,7 @@
                 };
                 const app = initializeApp(firebaseConfig);
                 const auth = getAuth(app);
-                const phoneNumber = this.phone_num;
+                const phoneNumber = temp_phone_num;
 
                 this.recaptchaVerifier = new RecaptchaVerifier('validate_btn', {
                     'size': 'invisible',
@@ -166,8 +242,6 @@
                         
                     });
                 
-                
-
             },
 
             async check_login(){
@@ -189,10 +263,22 @@
                 };
                 const app = initializeApp(firebaseConfig);
                 const db = getFirestore(app);
-
+                
+                var date = new Date();
+                var today = date.getFullYear()+'-'
+                +(date.getMonth()+1)+'-'
+                +date.getDate()+' '
+                +date.getHours()+':'
+                +date.getMinutes();           
+                
                 console.log('login success!!');
-                setDoc(doc(db, this.phone_num, this.phone_num), {
-                    name: this.phone_num,
+                setDoc(doc(db, 'users', this.phone_num), {
+                    nickname: this.nick_name,
+                    birth: this.birth_year,
+                    gender: this.gender,
+                    hashedphone: this.phone_num,
+                    registered_at: today,
+                    updated_at: today
                 });
                 this.cordovaUidSave(this.phone_num);
                 this.$router.push('/home');
@@ -210,6 +296,8 @@
                     resolve();
                 });
             }, 
+
+            
         
         }
     }
@@ -234,6 +322,7 @@ function UidSave(result){
     .field_section{
         display: flex;
         flex-direction: row;
+        /* background-color: brown; */
     }
     .textfield_title{
         color: white;
